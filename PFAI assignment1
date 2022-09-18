@@ -1,0 +1,67 @@
+class Eightpuzzle:
+    def __init__(self, intial, goal, state):
+        self.intial = intial
+        self.goal = goal
+        self.state=state
+        
+       
+  
+    def printMatrix(self, intial):  
+        for i in range(3):  
+            for j in range(3):  
+                print("%s " % (self.intial[i][j]), end = " ") 
+                
+    def move_left(self,intial):
+        self.swap = self.intial.copy()
+        
+        self.idx = self.swap.index('e') 
+        if (self.idx == 0 or self.idx == 3 or self.idx == 6):
+            return self.swap
+        else:
+            self.swap[idx-1] , self.swap[idx] = self.swap[idx] , self.swap[idx-1]  
+            return self.swap
+          
+    def move_right(self,intial):
+        self.swap = self.intial.copy()
+        self.idx = self.swap.index('e') 
+        if (self.idx == 2 or self.idx == 5 or self.idx == 8):
+            return self.swap
+        else:
+            self.swap[idx+1] , self.swap[idx] = self.swap[idx] , self.swap[idx+1]  
+            return self.swap
+
+
+    def move_up(self,intial):
+        self.swap = self.intial.copy()
+        self.idx = self.swap.index('e')  
+        if (self.idx == 0 or self.idx == 1 or self.idx == 2):
+            return self.swap
+        else:
+            self.swap[idx-3] , self.swap[idx] = self.swap[idx] , self.swap[idx-3]  
+            return self.swap
+
+
+    def move_down(self,intial):
+        self.swap = self.intial.copy()
+        self.idx = self.swap.index('e') 
+        if (self.idx == 6 or self.idx == 7 or self.idx ==8):
+            return self.swap
+        else:
+            self.swap[idx+3] , self.swap[idx] = self.swap[idx] , self.swap[idx+3]  
+            return self.swap             
+    
+
+      
+
+    
+
+
+test1 = [[1,2,3],[4,5,6],['e',7,8]]  
+test2= [[0,1,2],[3,4,5],[6,7,8]] 
+state1=[[0,2,3],[4,5,6],[1,7,8]] 
+
+p1=Eightpuzzle(test1,test2,state1)
+
+
+p1.printMatrix(test1)
+p1.move_left(test1)
